@@ -5,7 +5,7 @@
 
 ## Context
 
-The internship-aligned evidence is scheduling logic, SQL design, tests, Angular integration, and delivery workflow. Building an identity system first would delay those differentiating features.
+The most differentiated evidence is scheduling logic, SQL design, tests, Angular integration, and delivery workflow. Building an identity system first would delay those differentiating features.
 
 ## Decision
 
