@@ -2,7 +2,7 @@
 
 > This document describes what the repository actually contains as of the latest commit on `main`. It is the most accurate single-source description of the code that is committed and the code that is still pending. It is the right thing to read before reading `PROJECT_SPEC.md`, which describes the target product.
 >
-> **Last refreshed against commit `232b08f docs: remove JD and Wabtec references for resume-ready presentation`.**
+> **Last refreshed against commit `232b08f`.**
 > The repository currently implements Milestone 0 (foundation) and Milestone 1 (master-data APIs). Milestones 2–4 (scheduling, dispatcher workflow, portfolio delivery) are still pending and are tracked in [`docs/ROADMAP.md`](docs/ROADMAP.md).
 
 ## 1. What this project is
