@@ -1,0 +1,51 @@
+<a class="skip-link" href="#workspace">Skip to operations workspace</a>
+
+<div class="app-frame">
+  <header class="topbar">
+    <a class="brand" routerLink="/occupancy" aria-label="Rail Yard Control home">
+      <span class="brand-mark" aria-hidden="true">
+        <span>RY</span>
+      </span>
+      <span>
+        <strong class="brand-name">Rail Yard Control</strong>
+        <small>Slot &amp; conflict manager</small>
+      </span>
+    </a>
+
+    <div class="system-state" aria-label="System environment">
+      <span class="signal" aria-hidden="true"></span>
+      <span>
+        <small>Environment</small>
+        <strong>Local development</strong>
+      </span>
+    </div>
+  </header>
+
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="sidebar-heading">
+        <span>Control desk</span>
+        <span class="phase">Foundation / 01</span>
+      </div>
+
+      <nav class="primary-nav" aria-label="Primary navigation">
+        @for (item of navigation; track item.route) {
+          <a [routerLink]="item.route" routerLinkActive="active" ariaCurrentWhenActive="page">
+            <span class="nav-index">{{ item.index }}</span>
+            <span>{{ item.label }}</span>
+          </a>
+        }
+      </nav>
+
+      <div class="sidebar-note">
+        <span class="note-label">Time standard</span>
+        <strong>UTC storage</strong>
+        <span>Yard-local display planned</span>
+      </div>
+    </aside>
+
+    <main id="workspace" class="workspace" tabindex="-1">
+      <router-outlet />
+    </main>
+  </div>
+</div>

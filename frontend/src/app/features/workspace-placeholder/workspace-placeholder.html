@@ -1,0 +1,42 @@
+<section class="page" aria-labelledby="page-title">
+  <div class="page-heading">
+    <div>
+      <p class="eyebrow">{{ page.eyebrow }}</p>
+      <h1 id="page-title">{{ page.title }}</h1>
+      <p class="description">{{ page.description }}</p>
+    </div>
+    <span class="readiness">Module planned</span>
+  </div>
+
+  <div class="briefing-grid">
+    <article class="module-brief">
+      <div class="brief-label">
+        <span>Delivery card</span>
+        <span>Foundation</span>
+      </div>
+      <h2>What lands in this module</h2>
+      <ul>
+        @for (capability of page.capabilities; track capability) {
+          <li>
+            <span aria-hidden="true"></span>
+            {{ capability }}
+          </li>
+        }
+      </ul>
+    </article>
+
+    <aside class="engineering-note" aria-labelledby="engineering-note-title">
+      <p class="note-kicker">Current engineering focus</p>
+      <h2 id="engineering-note-title">Build the operating rules before the screens.</h2>
+      <p>
+        The first slice establishes versioned PostgreSQL constraints, UTC interval semantics, and
+        automated tests. Interface actions will connect only after those rules are reproducible.
+      </p>
+      <div class="sequence" aria-label="Initial delivery sequence">
+        <span><b>01</b> Schema</span>
+        <span><b>02</b> API</span>
+        <span><b>03</b> Workflow</span>
+      </div>
+    </aside>
+  </div>
+</section>

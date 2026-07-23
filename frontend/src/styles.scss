@@ -1,0 +1,71 @@
+@import '@fontsource/barlow-condensed/600.css';
+@import '@fontsource/ibm-plex-sans/400.css';
+@import '@fontsource/ibm-plex-sans/500.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+
+:root {
+  --ballast-950: #14201f;
+  --rail-900: #1c2a28;
+  --rail-800: #293b38;
+  --rail-700: #3b4d49;
+  --rail-600: #586965;
+  --steel-400: #879590;
+  --steel-300: #aeb9b4;
+  --steel-200: #ced6d2;
+  --fog-100: #eef2ed;
+  --paper: #fbfcf8;
+  --ink: #1a2926;
+  --muted-ink: #5b6965;
+  --signal-teal: #0e6670;
+  --signal-ready: #71a985;
+  --worklight-500: #e3a72f;
+  --worklight-100: #f7e8bd;
+  --danger: #a64038;
+  --grid-line: rgb(31 57 52 / 5%);
+  --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-utility: 'IBM Plex Mono', monospace;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-synthesis: none;
+  background: var(--fog-100);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 20rem;
+  min-height: 100%;
+  background: var(--fog-100);
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--worklight-500);
+  outline-offset: 3px;
+}
+
+::selection {
+  color: var(--ballast-950);
+  background: var(--worklight-100);
+}
