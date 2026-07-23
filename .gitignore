@@ -1,0 +1,29 @@
+# Dependencies and build output
+**/node_modules/
+**/target/
+**/dist/
+**/.angular/
+**/coverage/
+*.log
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# IDE and operating-system files
+.idea/
+.vscode/
+*.iml
+.classpath
+.project
+.settings/
+.DS_Store
+Thumbs.db
+
+# Local runtime data
+.postgres-data/
+.tmp/
+tmp/
