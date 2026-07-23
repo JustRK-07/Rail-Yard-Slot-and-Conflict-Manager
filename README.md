@@ -1,10 +1,10 @@
 # Rail Yard Slot and Conflict Manager
 
-A full-stack rail-operations portfolio project for assigning trains to suitable yard tracks without creating schedule conflicts.
+A full-stack rail-operations application that helps dispatchers assign trains to suitable yard tracks without creating schedule conflicts.
 
 > **Project status (as of the last commit on `main`):**
 >
-> - **Foundation** and **master-data API** slices are implemented and committed.
+> - The **foundation** and **master-data API** slices are implemented and committed.
 > - 12 backend tests pass against PostgreSQL 17 (Testcontainers).
 > - 3 frontend tests pass; production build passes.
 > - Local Docker Compose stack starts cleanly and serves master-data APIs.
@@ -23,7 +23,7 @@ A full-stack rail-operations portfolio project for assigning trains to suitable 
 - Stable page serialization (`PageSerializationMode.VIA_DTO`) so list responses do not depend on undocumented Spring Data internals.
 - Master-data APIs:
   - `GET /api/yards`, `GET /api/yards/{id}`, `POST /api/yards`, `PATCH /api/yards/{id}`
-  - `GET /api/yards/{yardId}/tracks`, `GET /api/tracks?yardId=`, `GET /api/tracks/{id}`, `POST /api/yards/{yardId}/tracks`, `PUT /api/tracks/{id}`, `PATCH /api/tracks/{id}/status?status=…`
+  - `GET /api/yards/{yardId}/tracks`, `GET /api/tracks?yardId=`, `GET /api/tracks/{id}`, `POST /api/yards/{yardId}/tracks`, `PUT /api/tracks/{trackId}`, `PATCH /api/tracks/{trackId}/status?status=…`
   - `GET /api/trains?query=…`, `GET /api/trains/{id}`, `POST /api/trains`, `PUT /api/trains/{id}`
 - OpenAPI metadata exposed at `/v3/api-docs` and the Swagger UI at `/swagger-ui`.
 
@@ -52,7 +52,7 @@ A full-stack rail-operations portfolio project for assigning trains to suitable 
 - Transactional reservation creation with atomic audit-event insertion, including the SQLSTATE `23P01` → `409 TRACK_RESERVATION_CONFLICT` mapping.
 - Angular reactive forms for the assignment, train, and track administration workflows, plus the yard occupancy timeline.
 - Authentication, role-based authorization, real user management, and any user-facing audit timeline.
-- AWS deployment (only the local Docker Compose stack is built).
+- Cloud deployment (only the local Docker Compose stack is built).
 - LICENSE file (deliberately left for the user to choose).
 - The first GitHub Actions run (only possible after the first push).
 
@@ -182,6 +182,7 @@ npm audit --omit=dev --audit-level=high
 ## Commit history (current)
 
 ```text
+bc1e94c docs: reflect master-data slice status in README, overview, roadmap, and ADRs
 15afa4e docs: add demo data script and project overview for the implemented slice
 9f9381b feat(frontend): scaffold Angular 21 dispatcher operations shell
 0470465 feat(backend): add Spring Boot 4.0 modular foundation and PostgreSQL schema
@@ -196,8 +197,8 @@ The granular task list lives in [`docs/ROADMAP.md`](docs/ROADMAP.md). Milestone 
 
 - **Milestone 2 — Scheduling and reservations**: `TimeWindow` utility, recommendation service, transactional reservation creation, conflict translation, lifecycle endpoints, concurrent-request tests.
 - **Milestone 3 — Dispatcher workflow**: typed API client, assignment reactive form, ranked-recommendation rendering, reservation detail and audit-history pages, accessible yard occupancy timeline, complete state set, end-to-end tests.
-- **Milestone 4 — Portfolio delivery**: OpenAPI examples and screenshots, measured coverage, security review, optional AWS deployment, and resume content that only references verified facts.
+- **Milestone 4 — Portfolio delivery**: OpenAPI examples and screenshots, measured coverage, security review, optional cloud deployment, and resume content that only references verified facts.
 
 ## Data and affiliation notice
 
-All yards, tracks, trains, schedules, and operational events in this repository are synthetic. This independent portfolio project is not affiliated with, endorsed by, or based on proprietary systems from Wabtec Corporation or any railway operator.
+All yards, tracks, trains, schedules, and operational events in this repository are synthetic. This independent portfolio project is not affiliated with, endorsed by, or based on proprietary systems from any railway operator or equipment vendor.

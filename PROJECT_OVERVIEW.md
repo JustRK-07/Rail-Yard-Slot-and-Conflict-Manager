@@ -7,7 +7,7 @@
 
 ## 1. What this project is
 
-A full-stack portfolio implementation of a rail-yard scheduling system built to demonstrate the Wabtec Computer Science Engineering internship competencies:
+A full-stack portfolio implementation of a rail-yard scheduling system:
 
 - A working backend REST API in Java 21 and Spring Boot 4.0.
 - A working Angular 21 dispatcher operations shell.
@@ -331,19 +331,14 @@ POSTGRES_PORT=55432 docker compose up --build
 docker compose exec -T db psql -U rail_yard -d rail_yard < scripts/demo-data.sql
 ```
 
-## 9. How this maps to the Wabtec JD
+## 9. Skills this project demonstrates
 
-| JD line | Where the evidence lives |
-|---|---|
-| Programming (C/C++/Java/Python) | `backend/` Java 21 / Spring Boot |
-| Frontend (Angular/JS) | `frontend/` Angular 21 / TypeScript |
-| RDBMS | Flyway migrations, exclusion constraint, buffer CHECK, indexes, joins |
-| Data structures and algorithms | `TimeWindow` (planned), `PriorityQueue` recommendation (planned), overlap detection (covered by `permitsAdjacentWindowsAndRejectsAnOverlapOnTheSameTrack`) |
-| Unit and integration tests | JUnit + Mockito + Testcontainers + Spring MockMvc + Angular Vitest |
-| Cloud (AWS) as an add-on | Docker Compose + Dockerfiles in place; AWS deployment is a later milestone |
-| Basic SDLC | Issues-and-ADRs documentation, conventional commit grouping ready, CI pipeline, versioned migrations |
-| Take ownership of module delivery | Each feature module owns its entities, DTOs, services, controllers, and tests |
-| Assist with development, troubleshooting, and deployment | Reproducible Docker stack, health checks, correlation IDs, structured error contract |
-| Be an excellent problem solver | The review-driven fixes (Spring Boot 4.0 namespaces, nginx trailing-slash prefixes, GiST yard_id, 24h buffer bound, page DTO, type-mismatch handler) are concrete examples of identifying and fixing real defects |
+- **Backend engineering in Java 21 and Spring Boot 4.0** — package-by-feature modular monolith, explicit DTOs, validation, RFC-style error contract, correlation IDs, and pagination.
+- **Relational schema design in PostgreSQL 17** — Flyway migrations, business checks, partial GiST exclusion constraint, 24-hour buffer bound, and indexes.
+- **Practical algorithms** — half-open interval overlap detection (verified by `permitsAdjacentWindowsAndRejectsAnOverlapOnTheSameTrack`), with planned `PriorityQueue` recommendation ranking and `TimeWindow` utility.
+- **Test discipline** — JUnit + Mockito + Testcontainers + Spring MockMvc + Angular Vitest, with the database constraint verified against real PostgreSQL.
+- **Frontend engineering in Angular 21** — standalone components, strict TypeScript, reactive forms-ready routing, accessible shell, design tokens, and a measurable test suite.
+- **Delivery and SDLC** — Docker Compose, multi-stage Dockerfiles, GitHub Actions, conventional commit grouping, versioned migrations, architecture decision records, and a roadmap that is updated as work lands.
+- **Practical problem solving** — the review-driven fixes (Spring Boot 4.0 namespaces, nginx trailing-slash prefixes, GiST yard_id key, 24-hour buffer bound, page DTO, type-mismatch handler) are concrete examples of identifying and fixing real defects.
 
 This document describes the state of the repository at the end of the master-data API slice. The next slice will add the `TimeWindow` utility, the recommendation service, and the transactional reservation workflow.

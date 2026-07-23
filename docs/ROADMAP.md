@@ -18,7 +18,7 @@ This checklist is the project-level source of truth for delivery progress. A che
 
 - [x] Initialize the local `main` repository and configure the SSH origin.
 - [x] Add repository hygiene, environment example, architecture, ER, concurrency, and ADR documentation.
-- [x] Document synthetic data and the lack of Wabtec/rail-operator affiliation.
+- [x] Document synthetic data and the lack of affiliation with any railway operator or equipment vendor.
 - [ ] Push the repository after GitHub SSH access is configured.
 
 ### Backend

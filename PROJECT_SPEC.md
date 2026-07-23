@@ -6,7 +6,7 @@
 
 The application uses a modern Angular frontend, a Java Spring Boot REST API, and PostgreSQL. Its key engineering feature is a scheduling module that filters incompatible tracks, detects overlapping time intervals, ranks valid alternatives, and safely handles two dispatchers attempting to reserve the same track at the same time.
 
-This is a fictional portfolio system built with synthetic data. It should not imply access to, endorsement by, or use of proprietary Wabtec systems.
+This is a fictional portfolio system built with synthetic data. It is not affiliated with, endorsed by, or based on proprietary systems from any railway operator or equipment vendor.
 
 ## 2. Why this project is valuable
 
@@ -61,7 +61,7 @@ Build a production-style scheduling module that can answer the following questio
 - Manages application users and roles.
 - Configures operational-purpose and capability reference data.
 
-Authentication and role management can be postponed until the scheduling workflow is complete. The internship JD is better demonstrated by a reliable core module than by spending most of the project on login functionality.
+Authentication and role management can be postponed until the scheduling workflow is complete. A reliable core module demonstrates stronger engineering judgment than spending most of the project on login functionality.
 
 ## 6. Core user journey
 
@@ -180,7 +180,7 @@ The frontend and backend both validate input. Backend validation remains authori
 - A microservice architecture.
 - Kafka or real-time streaming infrastructure.
 
-Keeping these items out of the MVP makes the project achievable and keeps attention on the JD requirements.
+Keeping these items out of the MVP makes the project achievable and keeps attention on the engineering core.
 
 ## 9. Business rules
 
@@ -858,24 +858,7 @@ During the demo:
 
 This tells a complete engineering story rather than merely showing several forms.
 
-## 26. JD mapping
-
-| JD requirement | Evidence in this project |
-|---|---|
-| Basic SDLC knowledge | Issues, acceptance criteria, branches, pull requests, migrations, ADRs, CI, and milestone delivery |
-| Assist with development, troubleshooting, and deployment | Structured logs, correlation IDs, integration tests, Docker, documentation, and optional AWS deployment |
-| Take ownership of module delivery | Scheduling module designed, implemented, tested, documented, and demonstrated end to end |
-| Collaborate and report progress | GitHub project board, concise pull requests, milestone notes, and demo presentation |
-| Java/Python/C/C++ knowledge | Java 21 and Spring Boot backend |
-| Angular/JavaScript knowledge | Angular, TypeScript, RxJS, reactive forms, and frontend tests |
-| RDBMS knowledge | PostgreSQL schema, foreign keys, joins, constraints, indexes, migrations, and transactions |
-| AWS knowledge as an add-on | Optional application deployment and RDS PostgreSQL |
-| Data structures and algorithms | Interval overlap detection, candidate filtering, comparator logic, and priority queue ranking |
-| Unit and integration tests | JUnit/Mockito unit tests, Testcontainers repository tests, API integration tests, and Angular tests |
-| Technical discussion or proof of concept | ADRs, architecture diagram, OpenAPI contract, conflict/concurrency demo, and presentation |
-| Rail/ports product relevance | Rail-yard track scheduling and operations workflow |
-
-## 27. Short description for a resume or portfolio
+## 26. Short description for a resume or portfolio
 
 > Developed a full-stack rail-yard scheduling application that recommends compatible tracks and prevents overlapping train reservations. Built the frontend with Angular and TypeScript, implemented transactional scheduling services in Java and Spring Boot, and designed a PostgreSQL schema with constraints, joins, indexes, and versioned migrations. Verified interval boundaries and concurrent booking behavior through unit and Testcontainers-based integration tests, with automated builds and tests in GitHub Actions.
 
