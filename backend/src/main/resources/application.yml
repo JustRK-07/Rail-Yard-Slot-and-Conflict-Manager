@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: rail-yard-api
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/rail_yard}
+    username: ${SPRING_DATASOURCE_USERNAME:rail_yard}
+    password: ${SPRING_DATASOURCE_PASSWORD:rail_yard_dev}
+  flyway:
+    enabled: true
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  jackson:
+    time-zone: UTC
+  web:
+    error:
+      include-binding-errors: never
+      include-exception: false
+      include-message: never
+      include-stacktrace: never
+
+server:
+  port: ${SERVER_PORT:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  health:
+    probes:
+      enabled: true
+  info:
+    env:
+      enabled: true
+
+info:
+  application:
+    name: Rail Yard Slot and Conflict Manager API
+    description: Conflict-safe rail-yard scheduling services
