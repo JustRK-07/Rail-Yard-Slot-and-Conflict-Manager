@@ -12,7 +12,8 @@ Two windows conflict when:
 
 ```text
 existing.start < requested.end
-AND existing.end > requested.start
+AND
+existing.end > requested.start
 ```
 
 Consequences:
@@ -28,14 +29,19 @@ Two requests can query availability at the same time, both observe no conflict, 
 PostgreSQL therefore enforces the invariant with a partial GiST exclusion constraint:
 
 ```sql
-EXCLUDE USING gist (
-    track_id WITH =,
-    tstzrange(occupied_from, occupied_until, '[)') WITH &&
-)
-WHERE (status IN ('PLANNED', 'ACTIVE'));
+ALTER TABLE track_reservations
+    ADD CONSTRAINT ex_reservations_no_track_overlap
+    EXCLUDE USING gist (
+        yard_id WITH =,
+        track_id WITH =,
+        tstzrange(occupied_from, occupied_until, '[)') WITH &&
+    )
+    WHERE (status IN ('PLANNED', 'ACTIVE'));
 ```
 
-`btree_gist` supplies equality support for UUID track IDs. The partial predicate means completed and cancelled reservations do not block future use.
+`btree_gist` supplies equality support on UUID columns. The partial predicate means completed and cancelled reservations do not block future use. Including `yard_id` in the constraint key means the invariant remains correct even if a future migration drops the `(track_id, yard_id)` composite FK.
+
+`V2__create_core_schema.sql` adds `ck_reservations_buffer_bounds` so `occupied_until` cannot exceed `scheduled_departure + 24 hours` and `occupied_from` cannot precede `scheduled_arrival - 24 hours`. This prevents a buggy or compromised writer from setting `occupied_until = 'infinity'` to bypass the GiST constraint.
 
 ## Planned transaction flow
 

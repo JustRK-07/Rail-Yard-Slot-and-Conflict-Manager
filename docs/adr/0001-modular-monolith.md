@@ -1,6 +1,6 @@
 # ADR 0001: Use a modular monolith
 
-- **Status:** Accepted
+- **Status:** Accepted and implemented for the foundation and master-data slices.
 - **Date:** 2026-07-22
 
 ## Context
@@ -17,3 +17,7 @@ Use one Spring Boot application organized by business feature. Angular and Postg
 - Local development and CI remain understandable.
 - Module boundaries must be maintained through package ownership rather than network isolation.
 - A module can be extracted later only if measured scale or team ownership justifies it.
+
+## Implementation status
+
+The `yard`, `track`, and `train` modules are wired end-to-end (entity, repository, DTOs, service, controller, integration tests). The `reservation`, `recommendation`, and `audit` modules currently contain only `package-info.java` placeholders and are scheduled for the next slice.

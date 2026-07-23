@@ -1,6 +1,16 @@
 # Development roadmap
 
-This checklist is the project-level source of truth for delivery progress. A checked item means the implementation exists and has been verified locally; CI-only items remain open until a GitHub Actions run confirms them.
+This checklist is the project-level source of truth for delivery progress. A checked item means the implementation exists and has been verified locally. Open items remain open until they are implemented and verified.
+
+## Current status snapshot
+
+- **Milestone 0 — Foundation:** all items complete locally; the first GitHub Actions run is pending the initial push.
+- **Milestone 1 — Master-data APIs:** all backend items complete; Angular read views for train and track are pending.
+- **Milestone 2 — Scheduling and reservations:** not started.
+- **Milestone 3 — Dispatcher workflow:** not started.
+- **Milestone 4 — Portfolio delivery:** not started.
+- **Local commit history:** `15afa4e` (docs) on top of `9f9381b` (frontend), `0470465` (backend), `f756aa2` (metadata).
+- **Repository remote:** `git@github.com:JustRK-07/Rail-Yard-Slot-and-Conflict-Manager.git`. SSH on this host returns `Permission denied (publickey)`, so the push is deferred until GitHub SSH access is configured.
 
 ## Milestone 0 — Foundation
 
@@ -15,8 +25,9 @@ This checklist is the project-level source of truth for delivery progress. A che
 
 - [x] Scaffold Java 21 and Spring Boot 4.0.7 with Maven Wrapper.
 - [x] Configure PostgreSQL, Flyway, JPA validation, UTC handling, Actuator, and OpenAPI.
-- [x] Create feature packages for yard, track, train, reservation, recommendation, and audit.
+- [x] Create feature packages for yard, track, train, common, reservation, recommendation, and audit.
 - [x] Run the Spring context test against PostgreSQL 17 with Testcontainers.
+- [x] Define the shared RFC-style API error envelope, correlation ID filter, and stable page serialization.
 
 ### Frontend
 
@@ -29,7 +40,8 @@ This checklist is the project-level source of truth for delivery progress. A che
 
 - [x] Add normalized tables for yards, tracks, track capabilities, trains, train requirements, reservations, and audit events.
 - [x] Add foreign keys, business checks, unique keys, optimistic versions, and query indexes.
-- [x] Add the partial GiST exclusion constraint for blocking reservation overlap.
+- [x] Add the partial GiST exclusion constraint (yard_id + track_id + tstzrange overlap) for blocking reservation overlap.
+- [x] Add the 24-hour buffer-bound CHECK constraint to prevent infinite occupied_until values.
 - [x] Verify adjacent and overlapping ranges against PostgreSQL 17.
 - [x] Add deterministic synthetic demo SQL.
 
@@ -42,27 +54,27 @@ This checklist is the project-level source of truth for delivery progress. A che
 - [x] Add GitHub Actions jobs for backend, frontend, production audit, and container builds.
 - [ ] Confirm the first GitHub Actions run after the repository is pushed.
 
-## Milestone 1 — Master data APIs
+## Milestone 1 — Master-data APIs
 
 - [x] Implement `Yard` entity, repository, DTOs, service, and CRUD endpoints.
-- [x] Implement `Track` and `TrackCapability` persistence and endpoints.
-- [x] Implement `Train` and required-capability persistence and endpoints.
+- [x] Implement `Track` and `TrackCapability` persistence and endpoints, including the PATCH-status endpoint.
+- [x] Implement `Train` and required-capability persistence and endpoints, including the case-insensitive search query.
 - [x] Add pagination, stable sorting, validation, and not-found handling.
 - [x] Add the shared RFC-style API error contract and correlation IDs.
 - [x] Add repository and API integration tests.
-- [ ] Connect Angular train and track read views.
+- [ ] Connect Angular train and track read views to the new backend APIs.
 
 ## Milestone 2 — Scheduling and reservations
 
 - [ ] Implement `TimeWindow` and half-open overlap unit tests.
-- [ ] Implement track compatibility filtering.
-- [ ] Implement deterministic `PriorityQueue` recommendation ranking.
-- [ ] Return included and excluded tracks with stable reason codes.
+- [ ] Implement track compatibility filtering (purpose, capability, length, status, occupancy).
+- [ ] Implement deterministic `PriorityQueue` recommendation ranking with stable tie-breakers.
+- [ ] Return included and excluded tracks with stable reason codes and human-readable explanations.
 - [ ] Implement `POST /api/scheduling/recommendations`.
-- [ ] Implement transactional reservation creation and atomic audit insertion.
+- [ ] Implement transactional reservation creation with atomic audit-event insertion.
 - [ ] Translate PostgreSQL SQLSTATE `23P01` into `409 TRACK_RESERVATION_CONFLICT`.
 - [ ] Implement reschedule, activate, complete, and cancel transitions.
-- [ ] Add concurrent-request integration tests proving one winner.
+- [ ] Add concurrent-request integration tests proving one winner and one conflict.
 
 ## Milestone 3 — Dispatcher workflow
 
@@ -85,6 +97,7 @@ This checklist is the project-level source of truth for delivery progress. A che
 - [ ] Measure before documenting any latency or performance claim.
 - [ ] Select and complete an AWS deployment only after the local MVP is stable.
 - [ ] Replace resume templates only with verified implementation facts.
+- [ ] Choose and commit a LICENSE file.
 
 ## Definition of done
 

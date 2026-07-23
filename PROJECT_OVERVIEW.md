@@ -1,6 +1,9 @@
 # Project Overview — Rail Yard Slot and Conflict Manager
 
-> This document describes what the repository actually contains as of the current development slice. It is the most accurate single-source description of the code that is committed, the code that is staged for the next commits, and the code that is still pending. It is the right thing to read before reading `PROJECT_SPEC.md`, which describes the target product.
+> This document describes what the repository actually contains as of the latest commit on `main`. It is the most accurate single-source description of the code that is committed and the code that is still pending. It is the right thing to read before reading `PROJECT_SPEC.md`, which describes the target product.
+>
+> **Last refreshed against commit `15afa4e docs: add demo data script and project overview for the implemented slice`.**
+> The repository currently implements Milestone 0 (foundation) and Milestone 1 (master-data APIs). Milestones 2–4 (scheduling, dispatcher workflow, portfolio delivery) are still pending and are tracked in [`docs/ROADMAP.md`](docs/ROADMAP.md).
 
 ## 1. What this project is
 
@@ -35,7 +38,7 @@ rail-yard-slot-conflict-manager/
 └── .github/workflows/ci.yml
 ```
 
-The repository is initialised on `main`. The remote is configured as `git@github.com:JustRK-07/Rail-Yard-Slot-and-Conflict-Manager.git`. SSH access currently returns `Permission denied (publickey)`, so no commit has been pushed; everything is local-only and `git status` shows the untracked top-level entries.
+The repository is on `main` with four local commits. The remote is configured as `git@github.com:JustRK-07/Rail-Yard-Slot-and-Conflict-Manager.git`. SSH on this host currently returns `Permission denied (publickey)`, so the push is deferred until GitHub SSH access is configured. `git status` is clean.
 
 ## 3. Backend — what is implemented
 
